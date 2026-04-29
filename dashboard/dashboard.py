@@ -6,20 +6,12 @@ from datetime import datetime
 # ======================
 # LOAD DATA
 # ======================
-orders = pd.read_csv("data/df_revenue.csv")
-payments = pd.read_csv("data/orders_clean.csv")
-
-# merge transaksi
-df = orders.merge(payments, on="order_id", suffixes=('_orders', '_payments'))
-# # Cek kolom setelah merge
-# st.write("Kolom setelah merge:", df.columns.tolist())
+# Gunakan main_data.csv sebagai data utama
+df = pd.read_csv("dashboard/main_data.csv")
 
 # Cari kolom customer_id
 customer_col = [col for col in df.columns if 'customer_id' in col][0]
 
-# ======================
-# HITUNG RFM
-# ======================
 # Cari kolom timestamp
 timestamp_col = [col for col in df.columns if 'order_purchase_timestamp' in col][0]
 
